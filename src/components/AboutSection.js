@@ -1,65 +1,44 @@
 import React from "react";
 import home1 from "../img/home1.png";
-//styled
-import styled from 'styled-components';
+import { About, Description, Hide, Image } from "../styles";
+//framer motion
+import {motion} from 'framer-motion'
+import {titleAnim,fade,photoAnim} from "../animation"
+import Wave from "./Wave";
 
 function AboutSection() {
+
+
   return (
     <About>
       <Description>
         <div className="title">
           <Hide>
-            <h2>We work to Make</h2>
+            <motion.h2 variants={titleAnim}>We work to Make</motion.h2>
           </Hide>
           <Hide>
-            <h2>
+            <motion.h2 variants={titleAnim}>
               your <span>dreams </span>Come
-            </h2>
+            </motion.h2>
           </Hide>
           <Hide>
-            <h2>true.</h2>
+            <motion.h2 variants={titleAnim}>true.</motion.h2>
           </Hide>
         </div>
-        <p>
+        <motion.p variants={fade}>
           Contact us from any photography or videography ideas that you have.we
           have professionals with amazing skills.
-        </p>
-        <button>Contact Us</button>
+        </motion.p>
+        <motion.button variants={fade}>Contact Us</motion.button>
       </Description>
       <Image>
-        <img src={home1} alt="gye" />
+        <motion.img variants={photoAnim} initial="hidden" animate="show" src={home1} alt="gye" />
       </Image>
+      <Wave/>
     </About>
   );
 }
 
-//styled components
-const About = styled.div`
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 5rem 10rem;
-  color:#fff;
-`
-const Description = styled.div`
-  flex:1;
-  padding-right:5rem;
-  h2{
-    font-weight:lighter;
-  }
-`
-const Image = styled.div`
-flex:1;
-overflow:hidden;
-img{
-  width:100%;
-  height:80vh;
-  object-fit:cover;
-}
-`
-const Hide = styled.div`
-overflow:hidden
-`
+
 
 export default AboutSection;
